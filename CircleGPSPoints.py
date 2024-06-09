@@ -10,19 +10,27 @@ import sys
 from xml.etree.ElementTree import Element, SubElement, ElementTree
 
 
-def create_text_file(points, file_name="test_circle.txt"):
+def create_text_file(points, file_name="test_circle"):
     """Save the list of points as a csv-style text file."""
 
-    with open(file_name, 'w') as file:
+    # add appropriate extension:
+    file = "%s.txt" % file_name
+
+    # open and write:
+    with open(file, 'w') as file:
         for lat, long in points:
             file.write(f"{lat}, {long}\n")
 
 
-def create_gpx_file(points, file_name="test_circle.gpx"):
+def create_gpx_file(points, file_name="test_circle"):
     """I asked chatgpt to write me a function to save list as gpx file...
     I have never used them so not really sure about this.
     But seems to load up ok... Tested with Organic maps."""
 
+    # add appropriate extension:
+    file = "%s.gpx" % file_name
+
+    # hmmm
     gpx = Element('gpx', version="1.1", creator="GPXGenerator")
     trk = SubElement(gpx, 'trk')
     trkseg = SubElement(trk, 'trkseg')
@@ -31,10 +39,11 @@ def create_gpx_file(points, file_name="test_circle.gpx"):
         SubElement(trkseg, 'trkpt', lat=str(lat), lon=str(lon))
 
     tree = ElementTree(gpx)
-    tree.write(file_name, xml_declaration=True, encoding='utf-8')
+
+    tree.write(file, xml_declaration=True, encoding='utf-8')
 
 
-def generate_circle(centre, radius=1000, num_points=360):
+def generate_circle(centre, radius, num_points=360):
     """Create a list of co-ordinates defining a circle around some centre.
      Takes in a central co-ordinate, a radius [metres] and number of points/resolution"""
 
@@ -64,7 +73,7 @@ def haversine_distance(point1, point2):
     lat1, long1 = point1
     lat2, long2 = point2
 
-    radius_earth = 6371000  # in metres...
+    radius_earth = 6371000                  # [m]
 
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
@@ -95,20 +104,23 @@ def main_function():
 
     # some debug:
     sanity_check_switch = True
-    test_point = [78.9239722, 11.9233056]       # my bedroom
+    test_point = [78.9239722, 11.9233056]           # my bedroom
 
     #
-    centre = test_point                         # lat, long, DD (decimal) or DMS (sexagesimal) ?
-    radius = 900                                # in metres
+    centre = test_point                             # lat, long, DD (decimal) or DMS (sexagesimal) ?
+    radius = 900                                    # in metres
 
     # get the circle of points
     coord_list = generate_circle(centre, radius)
     # just for fun
     if sanity_check_switch:
         sanity_check(centre, coord_list)
+
+    # create 'descriptive' file name
+    file_name = "%sm_RQZ_Circle_w_Centre_%.3f_%.3f" % (radius, centre[0], centre[1])
     # save the circle of points
-    create_text_file(coord_list)                # as csv-style text file
-    create_gpx_file(coord_list)                 # as .gpx file...
+    create_text_file(coord_list, file_name)         # as csv-style text file
+    create_gpx_file(coord_list, file_name)          # as .gpx file...
 
 
 if __name__ == '__main__':
