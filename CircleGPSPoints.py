@@ -1,8 +1,12 @@
 ##################
 # CircleGPSPoints
 # Given a centre, calculate a circle of gps co-ords around this using an inverse haversine formula.
+# In other words, we solve a direct problem of deteriming a destination given distance & bearing
+# using a spherical approximation, full all bearings, thus producing a circle of points.
+# This appraoch is considered to ahve m accuracy on km length scales (see links below)... Good enough.
 # Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory.
 # See http://www.movable-type.co.uk/scripts/latlong.html
+# https://stackoverflow.com/questions/7222382/get-lat-long-given-current-point-distance-and-bearing
 # ESL
 ##################
 
@@ -126,7 +130,7 @@ def main_function():
 
     # some debug:
     sanity_check_switch = True                      # to print to standard output the recalculated radii
-    test_point = [78.9239722, 11.9233056]           # my bedroom
+    test_point = [78.9239722, 11.9233056]           # my bedroom, in DD
 
     #
     centre = test_point                             # lat, long, DD (decimal) or DMS (sexagesimal) ?
