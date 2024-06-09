@@ -6,6 +6,7 @@
 ##################
 
 import math
+from math import asin, atan2, cos, degrees, radians, sin
 import sys
 from xml.etree.ElementTree import Element, SubElement, ElementTree
 
@@ -49,22 +50,50 @@ def generate_circle(centre, radius, num_points=360):
 
     # initialise empty points list:
     points_list = []
+
     # get the lat, long of centre
     lat_c, long_c = centre
+
     # calculate metres per degree (at this longitude):
-    M_PER_DEGREE_LAT = 111320  # constant
+    M_PER_DEGREE_LAT = 111320.0  # constant
     m_per_d_long = M_PER_DEGREE_LAT * math.cos(math.radians(lat_c))
+
     # loop through the number of points:
     for i in range(num_points + 1):
+
+        # convert radius to kilometres
+        distance = radius / 1000.0
         # get an angle (in radians) for each point
-        dtheta = math.radians(float(i) * 360.0 / num_points)
-        dlat = radius * math.cos(dtheta) / M_PER_DEGREE_LAT
-        dlong = radius * math.sin(dtheta) / m_per_d_long
-        lat_p = lat_c + dlat
-        long_p = long_c + dlong
-        points_list.append((lat_p, long_p))
+        dtheta = radians(float(i) * 360.0 / num_points)
+        # get true heading bearing from angle:
+        bearing = dtheta
+        # call get points function:
+        point = get_point_at_distance(lat_c, long_c, distance, bearing)
+
+    #    dlat = radius * math.cos(dtheta) / M_PER_DEGREE_LAT
+    #    dlong = radius * math.sin(dtheta) / m_per_d_long
+
+    #    lat_p = lat_c + dlat
+    #    long_p = long_c + dlong
+
+        points_list.append(point)
     # done:
     return points_list
+
+
+def get_point_at_distance(lat_i, long_i, d, b, r=6371):
+    """Given an initial lat, long (in degrees),
+     and distance (d) [km], and bearing (b) [degrees],
+      uses mean radius of earth R"""
+
+    lat1 = radians(lat_i)
+    long1 = radians(long_i)
+    a = radians(b)
+
+    lat2 = asin(sin(lat1) * cos(d/r) + cos(lat1) * sin(d/r) * cos(a))
+    long2 = long1 + atan2(sin(a) * sin(d/r) * cos(lat1), cos(d/r) - sin(lat1) * sin(lat2))
+
+    return [degrees(lat2), degrees(long2)]
 
 
 def haversine_distance(point1, point2):
@@ -75,14 +104,14 @@ def haversine_distance(point1, point2):
 
     radius_earth = 6371000                  # [m]
 
-    phi1 = math.radians(lat1)
-    phi2 = math.radians(lat2)
+    phi1 = radians(lat1)
+    phi2 = radians(lat2)
 
-    dphi = math.radians(lat2 - lat1)
-    dlambda = math.radians(long2 - long1)
+    dphi = radians(lat2 - lat1)
+    dlambda = radians(long2 - long1)
 
-    a = (math.sin(dphi / 2.0) ** 2) + math.cos(phi1) * math.cos(phi2) * (math.sin(dlambda / 2.0) ** 2)
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    a = (sin(dphi / 2.0) ** 2) + cos(phi1) * cos(phi2) * (sin(dlambda / 2.0) ** 2)
+    c = 2 * atan2(math.sqrt(a), math.sqrt(1 - a))
 
     metres = radius_earth * c
     metres = float('%.3f' % metres)
