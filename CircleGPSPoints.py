@@ -2,6 +2,7 @@
 # CircleGPSPoints
 # Given a centre, calculate a circle of gps co-ords around this using an inverse haversine formula.
 # Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory.
+# See http://www.movable-type.co.uk/scripts/latlong.html
 # ESL
 ##################
 
@@ -53,19 +54,17 @@ def generate_circle(centre, radius, num_points=360):
     # get the lat, long of centre
     lat_c, long_c = centre
 
+    # convert radius to kilometres
+    distance = radius / 1000.0
+
     # loop through the number of points:
     for i in range(num_points + 1):
 
-        # convert radius to kilometres
-        distance = radius / 1000.0
         # get true bearing (ie degrees clockwise from north) for each point
         dtheta = float(i) * 360.0 / num_points
         # call get points function:
         point = get_point_at_distance(lat_c, long_c, distance, dtheta)
         points_list.append(point)
-
-
-
 
     # done:
     return points_list
@@ -86,13 +85,11 @@ def get_point_at_distance(lat_i, long_i, d, b, r=6371):
     return [degrees(lat2), degrees(long2)]
 
 
-def haversine_distance(point1, point2):
+def haversine_distance(point1, point2, r=6371):
     """Given two co-ordinates, find the distance between them using the haversine formula."""
 
     lat1, long1 = point1
     lat2, long2 = point2
-
-    radius_earth = 6371000                  # [m]
 
     phi1 = radians(lat1)
     phi2 = radians(lat2)
@@ -103,7 +100,7 @@ def haversine_distance(point1, point2):
     a = (sin(dphi / 2.0) ** 2) + cos(phi1) * cos(phi2) * (sin(dlambda / 2.0) ** 2)
     c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-    metres = radius_earth * c
+    metres = r * c
     metres = float('%.3f' % metres)
 
     return metres
@@ -115,6 +112,7 @@ def sanity_check(centre, coord_list):
     for lat, long in coord_list:
         point = [lat, long]
         distance = haversine_distance(centre, point)
+        distance = distance*1000
         print(distance)
 
 
