@@ -103,7 +103,7 @@ def main_function():
     """Load in parameters and run the component functions."""
 
     # some debug:
-    sanity_check_switch = True
+    sanity_check_switch = True                      # to print to standard output the recalculated radii
     test_point = [78.9239722, 11.9233056]           # my bedroom
 
     #
