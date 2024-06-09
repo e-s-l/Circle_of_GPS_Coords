@@ -62,8 +62,13 @@ def generate_circle(centre, radius, num_points=360):
 
         # get true bearing (ie degrees clockwise from north) for each point
         dtheta = float(i) * 360.0 / num_points
+
         # call get points function:
         point = get_point_at_distance(lat_c, long_c, distance, dtheta)
+
+        # strip to 6 decimal places
+        point = float(format(point[0], '.6f')), float(format(point[1], '.6f'))
+
         points_list.append(point)
 
     # done:
