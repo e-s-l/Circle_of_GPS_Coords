@@ -1,7 +1,7 @@
 ##################
 # CircleGPSPoints
 # Given a centre, calculate a circle of gps co-ords around this using an inverse haversine formula.
-# Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory. 
+# Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory.
 # ESL
 ##################
 
