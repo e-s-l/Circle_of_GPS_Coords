@@ -5,8 +5,7 @@
 # ESL
 ##################
 
-import math
-from math import asin, atan2, cos, degrees, radians, sin
+from math import asin, atan2, cos, degrees, radians, sin, sqrt
 import sys
 from xml.etree.ElementTree import Element, SubElement, ElementTree
 
@@ -54,29 +53,20 @@ def generate_circle(centre, radius, num_points=360):
     # get the lat, long of centre
     lat_c, long_c = centre
 
-    # calculate metres per degree (at this longitude):
-    M_PER_DEGREE_LAT = 111320.0  # constant
-    m_per_d_long = M_PER_DEGREE_LAT * math.cos(math.radians(lat_c))
-
     # loop through the number of points:
     for i in range(num_points + 1):
 
         # convert radius to kilometres
         distance = radius / 1000.0
-        # get an angle (in radians) for each point
-        dtheta = radians(float(i) * 360.0 / num_points)
-        # get true heading bearing from angle:
-        bearing = dtheta
+        # get true bearing (ie degrees clockwise from north) for each point
+        dtheta = float(i) * 360.0 / num_points
         # call get points function:
-        point = get_point_at_distance(lat_c, long_c, distance, bearing)
-
-    #    dlat = radius * math.cos(dtheta) / M_PER_DEGREE_LAT
-    #    dlong = radius * math.sin(dtheta) / m_per_d_long
-
-    #    lat_p = lat_c + dlat
-    #    long_p = long_c + dlong
-
+        point = get_point_at_distance(lat_c, long_c, distance, dtheta)
         points_list.append(point)
+
+
+
+
     # done:
     return points_list
 
@@ -111,7 +101,7 @@ def haversine_distance(point1, point2):
     dlambda = radians(long2 - long1)
 
     a = (sin(dphi / 2.0) ** 2) + cos(phi1) * cos(phi2) * (sin(dlambda / 2.0) ** 2)
-    c = 2 * atan2(math.sqrt(a), math.sqrt(1 - a))
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
     metres = radius_earth * c
     metres = float('%.3f' % metres)
