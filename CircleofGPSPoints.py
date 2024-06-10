@@ -32,9 +32,7 @@ def create_text_file(points, file_name="test_circle"):
 
 
 def gpx_generator(points, file_name="test_circle"):
-    """I asked chatgpt to write me a function to save list as gpx file...
-    I have never used them so not really sure about this.
-    But seems to load up ok... Tested with Organic maps."""
+    """I have tried to follow the open standard. Tested with Organic maps. Not yet validated."""
 
     # add appropriate extension:
     file = "%s.gpx" % file_name
