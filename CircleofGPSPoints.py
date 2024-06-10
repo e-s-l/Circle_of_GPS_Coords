@@ -42,7 +42,7 @@ def gpx_generator(points, file_name, radius, centre_coord_string):
     SubElement(gpx, 'name').text = '%s' % file_name
     SubElement(gpx, 'author').text = 'ESL'
     SubElement(gpx, 'email').text = 'earl.sullivan.lester@kartverket.no'
-    SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per degree of true bearing.'
+    SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per 4 degrees from true bearing.'
     trk = SubElement(gpx, 'trk')
     SubElement(trk, 'name').text = 'Delineation of mobile-no-go zone'
     SubElement(gpx, 'desc').text = 'This track was computed as a perfect circle with radius %s [m], using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate: %s [lat]_[long]. Contact Earl at above email for more information.' % (radius, centre_coord_string)
@@ -58,7 +58,7 @@ def gpx_generator(points, file_name, radius, centre_coord_string):
 ################
 
 
-def generate_circle(centre, radius, num_points=360):
+def generate_circle(centre, radius, num_points=90):
     """Create a list of co-ordinates defining a circle around some centre.
      Takes in a central co-ordinate, a radius [metres] and number of points/resolution"""
 
@@ -102,6 +102,18 @@ def sanity_check(centre, radius, coord_list):
         distance = geodesic(radius).measure(centre, point)
         print(distance)
 
+def dms2dd(dms):
+
+    dd = []
+
+    for p in dms:
+        d, m, s = p
+        p_dd = d + (m / 60) + (s / 3600)
+
+        dd.append(p_dd)
+
+    return dd
+
 
 def main_function():
     """Load in parameters and run the component functions."""
@@ -110,8 +122,14 @@ def main_function():
     sanity_check_switch = True                      # to print to standard output the recalculated radii
     test_point = [78.9239722, 11.9233056]           # my bedroom, in DD (ie deciaml) (should it be DMS (ie sexagesimal)?)
 
+    brandal_dms = [(78, 56, 34.68),(11, 51, 19.78)]
+    brandal_dd = dms2dd(brandal_dms)
+
+    print(brandal_dd)
+
+
     # main parameters:
-    centre = test_point                             # lat, long
+    centre = brandal_dd                             # lat, long, DD
     radius = 900                                    # in metres
 
     # get the circle of points
