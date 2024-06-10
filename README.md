@@ -1,10 +1,12 @@
-*************************************************
-## CIRCLE OF GPS POINTS
+************************
 
-    Designed to determine the deliniation of a Radio Quiet Zone around a Geodetic Observatory.
+## Circle of GPS Co-ords
 
-    - V Quick N V Dirty...
-    - Given a centre coordinate, find a list of coordinates defining a cricle of a given radius around this.
-    - Learning the haversine distance formulas.
+    - The direct problem of geodesy...
+    - For fun, have attempted to do this 'properly'.
+    -
+    - Version_1_Haversine uses the spherical Haversine formula to the determine the points list.
 
-**************************************************
+************************
+
+
