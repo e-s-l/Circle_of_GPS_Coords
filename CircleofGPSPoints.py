@@ -103,6 +103,7 @@ def sanity_check(centre, radius, coord_list):
         print(distance)
 
 def dms2dd(dms):
+    """Quick conversion from sexagesimal (dms) to decimal (dd)"""
 
     dd = []
 
@@ -120,16 +121,13 @@ def main_function():
 
     # some debug:
     sanity_check_switch = True                      # to print to standard output the recalculated radii
-    test_point = [78.9239722, 11.9233056]           # my bedroom, in DD (ie deciaml) (should it be DMS (ie sexagesimal)?)
+    test_point = [78.9239722, 11.9233056]           # my bedroom, in DD
 
     brandal_dms = [(78, 56, 34.68),(11, 51, 19.78)]
     brandal_dd = dms2dd(brandal_dms)
 
-    print(brandal_dd)
-
-
     # main parameters:
-    centre = brandal_dd                             # lat, long, DD
+    centre = brandal_dd                             # lat, long, in DD
     radius = 900                                    # in metres
 
     # get the circle of points
