@@ -1,9 +1,7 @@
 ##################
 # CircleGPSPoints
-# Given a centre, calculate a circle of gps co-ords around this using an inverse haversine formula.
-# In other words, we solve a direct problem of deteriming a destination given distance & bearing
-#
-#
+# Given a centre, calculate a circle of gps co-ords around this.
+# In other words, we solve a direct problem of deteriming a destination given distance & bearing.
 # Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory.
 # Sources:
 # http://www.movable-type.co.uk/scripts/latlong.html
@@ -34,25 +32,32 @@ def create_text_file(points, file_name="test_circle"):
 def gpx_generator(points, file_name, radius, centre_coord_string):
     """I have tried to follow the open standard. Tested with Organic maps. Passed online validator."""
 
-    # add appropriate extension:
+    # add appropriate extension to file name:
     file = "%s.gpx" % file_name
 
-    # hmmm
+    # main element
     gpx = Element('gpx', xmlns="http://www.topografix.com/GPX/1/1", version="1.1", creator="gpx_generator.py (bespoke)")
+
+    # main descriptors
     SubElement(gpx, 'name').text = '%s' % file_name
     SubElement(gpx, 'author').text = 'ESL'
     SubElement(gpx, 'email').text = 'earl.sullivan.lester@kartverket.no'
     SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per 4 degrees from true bearing.'
+
+    # create track
     trk = SubElement(gpx, 'trk')
     SubElement(trk, 'name').text = 'Delineation of mobile-no-go zone'
     SubElement(gpx, 'desc').text = 'This track was computed as a perfect circle with radius %s [m], using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate: %s [lat]_[long]. Contact Earl at above email for more information.' % (radius, centre_coord_string)
 
+    # add points (track segements) to track
     trkseg = SubElement(trk, 'trkseg')
     for lat, lon in points:
         SubElement(trkseg, 'trkpt', lat=str(lat), lon=str(lon))
 
+    # put it all together
     tree = ElementTree(gpx)
 
+    # write to file
     tree.write(file, xml_declaration=True, encoding='utf-8', pretty_print=True)
 
 ################
@@ -110,7 +115,6 @@ def dms2dd(dms):
     for p in dms:
         d, m, s = p
         p_dd = d + (m / 60) + (s / 3600)
-
         dd.append(p_dd)
 
     return dd
