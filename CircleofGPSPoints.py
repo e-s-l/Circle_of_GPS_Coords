@@ -14,7 +14,7 @@
 ##################
 
 import sys                                                          # for the usual
-from xml.etree.ElementTree import Element, SubElement, ElementTree  # to generate a xml-style .gpx file
+from lxml.etree import Element, SubElement, ElementTree             # to generate a xml-style .gpx file
 from geopy import Point                                             # geopy's encoding of locations
 from geopy.distance import geodesic                                 # geodesic = karney(WGS-84)
 
@@ -53,7 +53,7 @@ def gpx_generator(points, file_name, radius, centre_coord_string):
 
     tree = ElementTree(gpx)
 
-    tree.write(file, xml_declaration=True, encoding='utf-8')
+    tree.write(file, xml_declaration=True, encoding='utf-8', pretty_print=True)
 
 ################
 

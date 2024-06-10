@@ -1,2 +1,104 @@
-<?xml version='1.0' encoding='utf-8'?>
-<gpx version="1.1" creator="gpx_generator.py (bespoke)"><name>900m_RQZ_Circle_w_Centre_78.943_11.855</name><author>ESL</author><email>earl.sullivan.lester@kartverket.no</email><desc>Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per 4 degrees from true bearing.</desc><trk><name>Delineation of mobile-no-go zone</name><trkseg><trkpt lat="78.951027" lon="11.855494" /><trkpt lat="78.951008" lon="11.858428" /><trkpt lat="78.950949" lon="11.861347" /><trkpt lat="78.950851" lon="11.864237" /><trkpt lat="78.950715" lon="11.867085" /><trkpt lat="78.950541" lon="11.869876" /><trkpt lat="78.95033" lon="11.872597" /><trkpt lat="78.950083" lon="11.875234" /><trkpt lat="78.949802" lon="11.877775" /><trkpt lat="78.949487" lon="11.880207" /><trkpt lat="78.94914" lon="11.882519" /><trkpt lat="78.948764" lon="11.884699" /><trkpt lat="78.948359" lon="11.886736" /><trkpt lat="78.947928" lon="11.888621" /><trkpt lat="78.947472" lon="11.890344" /><trkpt lat="78.946995" lon="11.891897" /><trkpt lat="78.946498" lon="11.893273" /><trkpt lat="78.945984" lon="11.894465" /><trkpt lat="78.945455" lon="11.895466" /><trkpt lat="78.944914" lon="11.896273" /><trkpt lat="78.944364" lon="11.896881" /><trkpt lat="78.943806" lon="11.897287" /><trkpt lat="78.943245" lon="11.897489" /><trkpt lat="78.942682" lon="11.897487" /><trkpt lat="78.942121" lon="11.89728" /><trkpt lat="78.941564" lon="11.89687" /><trkpt lat="78.941014" lon="11.896259" /><trkpt lat="78.940473" lon="11.895448" /><trkpt lat="78.939945" lon="11.894444" /><trkpt lat="78.939431" lon="11.893249" /><trkpt lat="78.938934" lon="11.891871" /><trkpt lat="78.938457" lon="11.890316" /><trkpt lat="78.938002" lon="11.888591" /><trkpt lat="78.937571" lon="11.886706" /><trkpt lat="78.937167" lon="11.884668" /><trkpt lat="78.936791" lon="11.882489" /><trkpt lat="78.936444" lon="11.880178" /><trkpt lat="78.93613" lon="11.877748" /><trkpt lat="78.935849" lon="11.875209" /><trkpt lat="78.935602" lon="11.872574" /><trkpt lat="78.935392" lon="11.869856" /><trkpt lat="78.935218" lon="11.867069" /><trkpt lat="78.935082" lon="11.864225" /><trkpt lat="78.934984" lon="11.861338" /><trkpt lat="78.934926" lon="11.858423" /><trkpt lat="78.934906" lon="11.855494" /><trkpt lat="78.934926" lon="11.852565" /><trkpt lat="78.934984" lon="11.849651" /><trkpt lat="78.935082" lon="11.846764" /><trkpt lat="78.935218" lon="11.84392" /><trkpt lat="78.935392" lon="11.841133" /><trkpt lat="78.935602" lon="11.838415" /><trkpt lat="78.935849" lon="11.83578" /><trkpt lat="78.93613" lon="11.833241" /><trkpt lat="78.936444" lon="11.83081" /><trkpt lat="78.936791" lon="11.8285" /><trkpt lat="78.937167" lon="11.82632" /><trkpt lat="78.937571" lon="11.824283" /><trkpt lat="78.938002" lon="11.822397" /><trkpt lat="78.938457" lon="11.820673" /><trkpt lat="78.938934" lon="11.819118" /><trkpt lat="78.939431" lon="11.81774" /><trkpt lat="78.939945" lon="11.816545" /><trkpt lat="78.940473" lon="11.815541" /><trkpt lat="78.941014" lon="11.81473" /><trkpt lat="78.941564" lon="11.814119" /><trkpt lat="78.942121" lon="11.813708" /><trkpt lat="78.942682" lon="11.813502" /><trkpt lat="78.943245" lon="11.8135" /><trkpt lat="78.943806" lon="11.813702" /><trkpt lat="78.944364" lon="11.814108" /><trkpt lat="78.944914" lon="11.814716" /><trkpt lat="78.945455" lon="11.815523" /><trkpt lat="78.945984" lon="11.816524" /><trkpt lat="78.946498" lon="11.817716" /><trkpt lat="78.946995" lon="11.819092" /><trkpt lat="78.947472" lon="11.820645" /><trkpt lat="78.947928" lon="11.822368" /><trkpt lat="78.948359" lon="11.824253" /><trkpt lat="78.948764" lon="11.82629" /><trkpt lat="78.94914" lon="11.82847" /><trkpt lat="78.949487" lon="11.830782" /><trkpt lat="78.949802" lon="11.833214" /><trkpt lat="78.950083" lon="11.835755" /><trkpt lat="78.95033" lon="11.838392" /><trkpt lat="78.950541" lon="11.841113" /><trkpt lat="78.950715" lon="11.843904" /><trkpt lat="78.950851" lon="11.846752" /><trkpt lat="78.950949" lon="11.849642" /><trkpt lat="78.951008" lon="11.852561" /><trkpt lat="78.951027" lon="11.855494" /></trkseg></trk><desc>This track was computed as a perfect circle with radius 900 [m], using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate: 78.943_11.855 [lat]_[long]. Contact Earl at above email for more information.</desc></gpx>
+<?xml version='1.0' encoding='UTF-8'?>
+<gpx version="1.1" creator="gpx_generator.py (bespoke)">
+  <name>900m_RQZ_Circle_w_Centre_78.943_11.855</name>
+  <author>ESL</author>
+  <email>earl.sullivan.lester@kartverket.no</email>
+  <desc>Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per 4 degrees from true bearing.</desc>
+  <trk>
+    <name>Delineation of mobile-no-go zone</name>
+    <trkseg>
+      <trkpt lat="78.951027" lon="11.855494"/>
+      <trkpt lat="78.951008" lon="11.858428"/>
+      <trkpt lat="78.950949" lon="11.861347"/>
+      <trkpt lat="78.950851" lon="11.864237"/>
+      <trkpt lat="78.950715" lon="11.867085"/>
+      <trkpt lat="78.950541" lon="11.869876"/>
+      <trkpt lat="78.95033" lon="11.872597"/>
+      <trkpt lat="78.950083" lon="11.875234"/>
+      <trkpt lat="78.949802" lon="11.877775"/>
+      <trkpt lat="78.949487" lon="11.880207"/>
+      <trkpt lat="78.94914" lon="11.882519"/>
+      <trkpt lat="78.948764" lon="11.884699"/>
+      <trkpt lat="78.948359" lon="11.886736"/>
+      <trkpt lat="78.947928" lon="11.888621"/>
+      <trkpt lat="78.947472" lon="11.890344"/>
+      <trkpt lat="78.946995" lon="11.891897"/>
+      <trkpt lat="78.946498" lon="11.893273"/>
+      <trkpt lat="78.945984" lon="11.894465"/>
+      <trkpt lat="78.945455" lon="11.895466"/>
+      <trkpt lat="78.944914" lon="11.896273"/>
+      <trkpt lat="78.944364" lon="11.896881"/>
+      <trkpt lat="78.943806" lon="11.897287"/>
+      <trkpt lat="78.943245" lon="11.897489"/>
+      <trkpt lat="78.942682" lon="11.897487"/>
+      <trkpt lat="78.942121" lon="11.89728"/>
+      <trkpt lat="78.941564" lon="11.89687"/>
+      <trkpt lat="78.941014" lon="11.896259"/>
+      <trkpt lat="78.940473" lon="11.895448"/>
+      <trkpt lat="78.939945" lon="11.894444"/>
+      <trkpt lat="78.939431" lon="11.893249"/>
+      <trkpt lat="78.938934" lon="11.891871"/>
+      <trkpt lat="78.938457" lon="11.890316"/>
+      <trkpt lat="78.938002" lon="11.888591"/>
+      <trkpt lat="78.937571" lon="11.886706"/>
+      <trkpt lat="78.937167" lon="11.884668"/>
+      <trkpt lat="78.936791" lon="11.882489"/>
+      <trkpt lat="78.936444" lon="11.880178"/>
+      <trkpt lat="78.93613" lon="11.877748"/>
+      <trkpt lat="78.935849" lon="11.875209"/>
+      <trkpt lat="78.935602" lon="11.872574"/>
+      <trkpt lat="78.935392" lon="11.869856"/>
+      <trkpt lat="78.935218" lon="11.867069"/>
+      <trkpt lat="78.935082" lon="11.864225"/>
+      <trkpt lat="78.934984" lon="11.861338"/>
+      <trkpt lat="78.934926" lon="11.858423"/>
+      <trkpt lat="78.934906" lon="11.855494"/>
+      <trkpt lat="78.934926" lon="11.852565"/>
+      <trkpt lat="78.934984" lon="11.849651"/>
+      <trkpt lat="78.935082" lon="11.846764"/>
+      <trkpt lat="78.935218" lon="11.84392"/>
+      <trkpt lat="78.935392" lon="11.841133"/>
+      <trkpt lat="78.935602" lon="11.838415"/>
+      <trkpt lat="78.935849" lon="11.83578"/>
+      <trkpt lat="78.93613" lon="11.833241"/>
+      <trkpt lat="78.936444" lon="11.83081"/>
+      <trkpt lat="78.936791" lon="11.8285"/>
+      <trkpt lat="78.937167" lon="11.82632"/>
+      <trkpt lat="78.937571" lon="11.824283"/>
+      <trkpt lat="78.938002" lon="11.822397"/>
+      <trkpt lat="78.938457" lon="11.820673"/>
+      <trkpt lat="78.938934" lon="11.819118"/>
+      <trkpt lat="78.939431" lon="11.81774"/>
+      <trkpt lat="78.939945" lon="11.816545"/>
+      <trkpt lat="78.940473" lon="11.815541"/>
+      <trkpt lat="78.941014" lon="11.81473"/>
+      <trkpt lat="78.941564" lon="11.814119"/>
+      <trkpt lat="78.942121" lon="11.813708"/>
+      <trkpt lat="78.942682" lon="11.813502"/>
+      <trkpt lat="78.943245" lon="11.8135"/>
+      <trkpt lat="78.943806" lon="11.813702"/>
+      <trkpt lat="78.944364" lon="11.814108"/>
+      <trkpt lat="78.944914" lon="11.814716"/>
+      <trkpt lat="78.945455" lon="11.815523"/>
+      <trkpt lat="78.945984" lon="11.816524"/>
+      <trkpt lat="78.946498" lon="11.817716"/>
+      <trkpt lat="78.946995" lon="11.819092"/>
+      <trkpt lat="78.947472" lon="11.820645"/>
+      <trkpt lat="78.947928" lon="11.822368"/>
+      <trkpt lat="78.948359" lon="11.824253"/>
+      <trkpt lat="78.948764" lon="11.82629"/>
+      <trkpt lat="78.94914" lon="11.82847"/>
+      <trkpt lat="78.949487" lon="11.830782"/>
+      <trkpt lat="78.949802" lon="11.833214"/>
+      <trkpt lat="78.950083" lon="11.835755"/>
+      <trkpt lat="78.95033" lon="11.838392"/>
+      <trkpt lat="78.950541" lon="11.841113"/>
+      <trkpt lat="78.950715" lon="11.843904"/>
+      <trkpt lat="78.950851" lon="11.846752"/>
+      <trkpt lat="78.950949" lon="11.849642"/>
+      <trkpt lat="78.951008" lon="11.852561"/>
+      <trkpt lat="78.951027" lon="11.855494"/>
+    </trkseg>
+  </trk>
+  <desc>This track was computed as a perfect circle with radius 900 [m], using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate: 78.943_11.855 [lat]_[long]. Contact Earl at above email for more information.</desc>
+</gpx>
