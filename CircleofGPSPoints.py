@@ -38,7 +38,7 @@ def gpx_generator(points, file_name, radius, centre_coord_string):
     file = "%s.gpx" % file_name
 
     # hmmm
-    gpx = Element('gpx', version="1.1", creator="gpx_generator.py (bespoke)")
+    gpx = Element('gpx', xmlns="http://www.topografix.com/GPX/1/1", version="1.1", creator="gpx_generator.py (bespoke)")
     SubElement(gpx, 'name').text = '%s' % file_name
     SubElement(gpx, 'author').text = 'ESL'
     SubElement(gpx, 'email').text = 'earl.sullivan.lester@kartverket.no'

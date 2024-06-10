@@ -5,7 +5,7 @@
     - An example of the direct problem of geodesy...
     - For fun, have attempted to do this 'properly', though completely unnecessarily.
     - Version_1_Haversine uses the spherical Haversine formula to the determine the points list.
-    - This version uses geopy to use an ellipsoidal model. It also produces well-formatted gpx files.
+    - This version uses geopy to use an ellipsoidal model. It also produces (almost) well-formatted gpx files.
 
 ******************************************
 
