@@ -5,8 +5,11 @@
 #
 #
 # Designed to determine co-ordinates delineating a RQZ/mobile-no-go zone around a radio observatory.
-# See http://www.movable-type.co.uk/scripts/latlong.html
+# Sources:
+# http://www.movable-type.co.uk/scripts/latlong.html
 # https://stackoverflow.com/questions/7222382/get-lat-long-given-current-point-distance-and-bearing
+# https://hikingguy.com/how-to-hike/what-is-a-gpx-file/
+# https://www.topografix.com/gpx_manual.asp
 # ESL
 ##################
 
@@ -28,7 +31,7 @@ def create_text_file(points, file_name="test_circle"):
             file.write(f"{lat}, {long}\n")
 
 
-def create_gpx_file(points, file_name="test_circle"):
+def gpx_generator(points, file_name="test_circle"):
     """I asked chatgpt to write me a function to save list as gpx file...
     I have never used them so not really sure about this.
     But seems to load up ok... Tested with Organic maps."""
@@ -37,12 +40,16 @@ def create_gpx_file(points, file_name="test_circle"):
     file = "%s.gpx" % file_name
 
     # hmmm
-    gpx = Element('gpx', version="1.0", creator="ESL")
+    gpx = Element('gpx', version="1.1", creator="gpx_generator.py (bespoke)")
+    SubElement(gpx, 'name').text = '%s' % file_name
+    SubElement(gpx, 'author').text = 'ESL'
+    SubElement(gpx, 'email').text = 'earl.sullivan.lester@kartverket.no'
+    SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region.'
     trk = SubElement(gpx, 'trk')
-    name = SubElement(trk, 'name')
-    name.text = '%s' % file_name
-    trkseg = SubElement(trk, 'trkseg')
+    SubElement(trk, 'name').text = 'Delineation of mobile-no-go zone'
+    SubElement(gpx, 'desc').text = 'This track was computed as a perfect circle, using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate. Contact Earl at above email for more information.'
 
+    trkseg = SubElement(trk, 'trkseg')
     for lat, lon in points:
         SubElement(trkseg, 'trkpt', lat=str(lat), lon=str(lon))
 
@@ -121,7 +128,7 @@ def main_function():
 
     # save the circle of points
     create_text_file(coord_list, file_name)         # as csv-style text file
-    create_gpx_file(coord_list, file_name)          # as .gpx file...
+    gpx_generator(coord_list, file_name)          # as .gpx file...
 
 
 if __name__ == '__main__':
