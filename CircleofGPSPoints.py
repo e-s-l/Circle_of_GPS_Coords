@@ -31,8 +31,8 @@ def create_text_file(points, file_name="test_circle"):
             file.write(f"{lat}, {long}\n")
 
 
-def gpx_generator(points, file_name="test_circle"):
-    """I have tried to follow the open standard. Tested with Organic maps. Not yet validated."""
+def gpx_generator(points, file_name, radius, centre_coord_string):
+    """I have tried to follow the open standard. Tested with Organic maps. Passed online validator."""
 
     # add appropriate extension:
     file = "%s.gpx" % file_name
@@ -42,10 +42,10 @@ def gpx_generator(points, file_name="test_circle"):
     SubElement(gpx, 'name').text = '%s' % file_name
     SubElement(gpx, 'author').text = 'ESL'
     SubElement(gpx, 'email').text = 'earl.sullivan.lester@kartverket.no'
-    SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region.'
+    SubElement(gpx, 'desc').text = 'Within the Ny Ålesund RQZ is a core mobile-no-go zone surrouding the observatory. The track to follow delinates this region with a resolution of one point per degree of true bearing.'
     trk = SubElement(gpx, 'trk')
     SubElement(trk, 'name').text = 'Delineation of mobile-no-go zone'
-    SubElement(gpx, 'desc').text = 'This track was computed as a perfect circle, using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate. Contact Earl at above email for more information.'
+    SubElement(gpx, 'desc').text = 'This track was computed as a perfect circle with radius %s [m], using a karney formula and the WGS-84 ellisoidal model, around a central co-ordinate: %s [lat]_[long]. Contact Earl at above email for more information.' % (radius, centre_coord_string)
 
     trkseg = SubElement(trk, 'trkseg')
     for lat, lon in points:
@@ -122,11 +122,12 @@ def main_function():
         sanity_check(centre, radius, coord_list)
 
     # create 'descriptive' file name
-    file_name = "%sm_RQZ_Circle_w_Centre_%.3f_%.3f" % (radius, centre[0], centre[1])
+    centre_coord_string = '%.3f_%.3f' % (centre[0], centre[1])
+    file_name = "%sm_RQZ_Circle_w_Centre_%s" % (radius, centre_coord_string)
 
     # save the circle of points
-    create_text_file(coord_list, file_name)         # as csv-style text file
-    gpx_generator(coord_list, file_name)          # as .gpx file...
+    create_text_file(coord_list, file_name)                                 # as csv-style .txt file
+    gpx_generator(coord_list, file_name, radius, centre_coord_string)       # as xml-style .gpx file...
 
 
 if __name__ == '__main__':
