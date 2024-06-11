@@ -15,6 +15,7 @@ import sys                                                          # for the us
 from lxml.etree import Element, SubElement, ElementTree             # to generate a xml-style .gpx file
 from geopy import Point                                             # geopy's encoding of locations
 from geopy.distance import geodesic                                 # geodesic = karney(WGS-84)
+from DegreeCoordinatesTransform import dms2dd
 
 
 def create_text_file(points, file_name="test_circle"):
