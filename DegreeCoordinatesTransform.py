@@ -1,10 +1,13 @@
-
-
+##################################
+# DECICMAL/SEXAGESIMAL CONVERTOR #
+##################################
 
 
 def dms2dd(dms):
     """Quick conversion from sexagesimal (dms) to decimal (dd).
     Assumes [long, lat] form of input."""
+
+    print("Converting point from DMS to DD.")
 
     dd = []
 
@@ -19,6 +22,8 @@ def dms2dd(dms):
 def dd2dms(dd):
     """Quick conversion from decimal (dd) to sexagesimal (dms).
     Assumes [long, lat] form of input."""
+
+    print("Converting point from DD to DMS.")
 
     dms = []
 
@@ -39,12 +44,12 @@ def dd2dms(dd):
 ###
 
 def identify_point_type(p):
+    """Find whether co-ord has DD or DMS type values"""
 
     point_type = ""
 
     # first make sure is co-ordinate pair
     if len(p) == 2:
-
 
         if isinstance(p[0], float):
                 point_type = "DD"
@@ -58,32 +63,40 @@ def identify_point_type(p):
 
 ###
 
+def convert_type(coord):
+    """Find coord type and convert to alternative form"""
+
+    print(coord)
+
+    type = identify_point_type(coord)
+
+    if type == "DD":
+        coord_converted = dd2dms(coord)
+    elif type == "DMS":
+         coord_converted = dms2dd(coord)
+
+    print(coord_converted)
+    return coord_converted
+
 
 def test_conversions():
+    """Debug: run through some example points"""
 
-    point_1 = [78.9239722, 11.9233056]
+    # test points:
+    p1 = [78.9239722, 11.9233056]
+    p2 = [(78, 56, 34.68), (11, 51, 19.78)]
 
-    print("Test Point:")
-    print(point_1)
-    identify_point_type(point_1)
+    points_original = [p1, p2]
+    points_converted = []
 
-    print("Converting point from DMS to DD:")
-    point_1_dms = dd2dms(point_1)
-    print(point_1_dms)
-    print("Converting point from DD to DMS:")
-    print(dms2dd(point_1_dms))
+    for point in points_original:
 
-    point_2 = [(78, 56, 34.68), (11, 51, 19.78)]
+        p_c = convert_type(point)
+        points_converted.append(p_c)
 
-    print("Test Point:")
-    print(point_2)
-    identify_point_type(point_2)
-
-    print("Converting point from DMS to DD:")
-    point_2_dd = dms2dd(point_2)
-    print(point_2_dd)
-    print("Converting point from DD to DMS:")
-    print(dd2dms(point_2_dd))
+    # sanity check:
+    for point in points_converted:
+        convert_type(point)
 
 
 
