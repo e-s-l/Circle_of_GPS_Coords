@@ -108,18 +108,6 @@ def sanity_check(centre, radius, coord_list):
         distance = geodesic(radius).measure(centre, point)
         print(distance)
 
-def dms2dd(dms):
-    """Quick conversion from sexagesimal (dms) to decimal (dd)"""
-
-    dd = []
-
-    for p in dms:
-        d, m, s = p
-        p_dd = d + (m / 60) + (s / 3600)
-        dd.append(p_dd)
-
-    return dd
-
 
 def main_function():
     """Load in parameters and run the component functions."""
